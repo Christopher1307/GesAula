@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+
+<ToolBar fx:id="view" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+    <items>
+        <Button fx:id="newButton" mnemonicParsing="false" onAction="#onNewAction" text="Nuevo" />
+        <TextField fx:id="ficheroText" promptText="Nombre del fichero" />
+        <Button fx:id="saveButton" defaultButton="true" mnemonicParsing="false" onAction="#onSaveAction" text="Guardar" />
+    </items>
+</ToolBar>
