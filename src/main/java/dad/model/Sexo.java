@@ -1,4 +1,4 @@
-package dad.gesaula.model;
+package dad.model;
 
 import jakarta.xml.bind.annotation.XmlEnum;
 import jakarta.xml.bind.annotation.XmlType;

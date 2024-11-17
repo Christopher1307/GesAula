@@ -1,4 +1,4 @@
-package dad.gesaula.model;
+package dad.model;
 
 import java.io.File;
 import java.time.LocalDate;
@@ -38,7 +38,7 @@ public class Grupo {
 		pesos = new SimpleObjectProperty<>(this, "pesos", new Pesos());
 		alumnos = new SimpleListProperty<>(this, "alumnos", FXCollections.observableArrayList());
 	}
-	
+
 	public void save(File file) throws Exception {
 		JAXBContext context = JAXBContext.newInstance(Grupo.class);
 		Marshaller marshaller = context.createMarshaller();

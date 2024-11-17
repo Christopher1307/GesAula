@@ -1,4 +1,5 @@
-package dad.gesaula.model;
+package dad.model;
+
 
 import java.time.LocalDate;
 
@@ -94,7 +95,7 @@ public class Alumno {
 	public void setRepite(final boolean repite) {
 		this.repiteProperty().set(repite);
 	}
-	
+
 	@Override
 	public String toString() {
 		return (getNombre() + " " + getApellidos()).trim();
