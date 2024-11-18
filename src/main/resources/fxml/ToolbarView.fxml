@@ -4,7 +4,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 
-<ToolBar fx:id="view" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<ToolBar fx:id="view" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dad.Controllers.ToolbarController">
     <items>
         <Button fx:id="newButton" mnemonicParsing="false" onAction="#onNewAction" text="Nuevo" />
         <TextField fx:id="ficheroText" promptText="Nombre del fichero" />

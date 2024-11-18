@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,7 +19,6 @@ import java.util.ResourceBundle;
 public class RootController implements Initializable {
 
     // model
-
     private ObjectProperty<Grupo> grupo = new SimpleObjectProperty<>();
 
     @FXML
@@ -30,8 +30,7 @@ public class RootController implements Initializable {
     @FXML
     private BorderPane root;
 
-    //controllers
-
+    // controllers
     private ToolbarController toolbarController;
     private GrupoController grupoController;
     private AlumnosController alumnosController;
@@ -40,31 +39,40 @@ public class RootController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RootView.fxml"));
         loader.setController(this);
         loader.load();
-
-        toolbarController = new ToolbarController();
-        grupoController = new GrupoController();
-        alumnosController = new AlumnosController();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            // Load ToolbarView
+            FXMLLoader toolbarLoader = new FXMLLoader(getClass().getResource("/fxml/ToolbarView.fxml"));
+            Pane toolbarView = toolbarLoader.load();
+            toolbarController = toolbarLoader.getController();
+            root.setTop(toolbarView);
 
-        // compound view with subcontrollers
+            // Load AlumnosView
+            FXMLLoader alumnosLoader = new FXMLLoader(getClass().getResource("/fxml/AlumnosView.fxml"));
+            Pane alumnosView = alumnosLoader.load();
+            alumnosController = alumnosLoader.getController();
+            alumnosTab.setContent(alumnosView);
 
-        root.setTop(toolbarController.getView());
-        grupoTab.setContent(grupoController.getView());
-        alumnosTab.setContent(alumnosController.getView());
+            // Load GrupoView
+            FXMLLoader grupoLoader = new FXMLLoader(getClass().getResource("/fxml/GrupoView.fxml"));
+            Pane grupoView = grupoLoader.load();
+            grupoController = grupoLoader.getController();
+            grupoTab.setContent(grupoView);
 
-        // bindings
+            // bindings
+            toolbarController.grupoProperty().bindBidirectional(grupo);
+            grupoController.grupoProperty().bind(grupo);
 
-        toolbarController.grupoProperty().bindBidirectional(grupo);
-        grupoController.grupoProperty().bind(grupo);
+            // listeners
+            grupo.addListener(this::onGrupoChanged);
 
-        // listeners
-
-        grupo.addListener(this::onGrupoChanged);
-
-        grupo.set(new Grupo());
+            grupo.set(new Grupo());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void onGrupoChanged(ObservableValue<? extends Grupo> observable, Grupo oldValue, Grupo newValue) {

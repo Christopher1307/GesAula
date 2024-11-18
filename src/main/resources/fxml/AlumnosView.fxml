@@ -14,58 +14,58 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane fx:id="root" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
-   <items>
-      <GridPane fx:id="tablaGridPane">
-        <columnConstraints>
-          <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
-          <RowConstraints vgrow="NEVER" />
-        </rowConstraints>
-         <children>
-            <TableView fx:id="EstudianteTablaView" prefHeight="200.0" prefWidth="200.0">
-              <columns>
-                <TableColumn fx:id="nameTableColumn" prefWidth="75.0" text="Nombre" />
-                <TableColumn fx:id="lastnameTableColumn" prefWidth="75.0" text="Apellidos" />
-                  <TableColumn fx:id="birthdateTableColumn" prefWidth="75.0" text="Fecha de nacimiento" />
-              </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-            <HBox alignment="TOP_RIGHT" prefHeight="31.0" prefWidth="296.0" spacing="5.0" GridPane.rowIndex="1">
-               <children>
-                  <Button fx:id="newButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onNewAction" text="Nuevo">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/add-32x32.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="deleteButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onDeleteAction" text="Eliminar">
-                     <graphic>
-                        <ImageView pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/del-32x32.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </HBox>
-         </children>
-      </GridPane>
-      <VBox fx:id="emptyBox" alignment="CENTER">
-         <children>
-            <Label text="Seleccione un alumno en la tabla de la izquierda" />
-         </children>
-      </VBox>
-   </items>
+<SplitPane fx:id="root" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dad.Controllers.AlumnosController">
+    <items>
+        <GridPane fx:id="tablaGridPane">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" minWidth="-Infinity" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+                <RowConstraints vgrow="NEVER" />
+            </rowConstraints>
+            <children>
+                <TableView fx:id="EstudianteTablaView" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                        <TableColumn fx:id="nameTableColumn" prefWidth="75.0" text="Nombre" />
+                        <TableColumn fx:id="lastnameTableColumn" prefWidth="75.0" text="Apellidos" />
+                        <TableColumn fx:id="birthdateTableColumn" prefWidth="75.0" text="Fecha de nacimiento" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <HBox alignment="TOP_RIGHT" prefHeight="31.0" prefWidth="296.0" spacing="5.0" GridPane.rowIndex="1">
+                    <children>
+                        <Button fx:id="newButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onNewAction" text="Nuevo">
+                            <graphic>
+                                <ImageView fitHeight="32.0" fitWidth="58.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/add-32x32.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Button fx:id="deleteButton" alignment="CENTER_RIGHT" mnemonicParsing="false" onAction="#onDeleteAction" text="Eliminar">
+                            <graphic>
+                                <ImageView pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/del-32x32.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </GridPane>
+        <VBox fx:id="emptyBox" alignment="CENTER">
+            <children>
+                <Label text="Seleccione un alumno en la tabla de la izquierda" />
+            </children>
+        </VBox>
+    </items>
 </SplitPane>
