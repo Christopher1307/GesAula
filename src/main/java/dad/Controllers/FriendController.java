@@ -29,13 +29,13 @@ public class FriendController implements Initializable {
 
     // model
 
-    private StringProperty nombre = new SimpleStringProperty();
-    private StringProperty apellidos = new SimpleStringProperty();
-    private ObjectProperty<LocalDate> nacimiento = new SimpleObjectProperty<>();
-    private ObjectProperty<Sexo> sexo = new SimpleObjectProperty<>();
-    private BooleanProperty repite = new SimpleBooleanProperty();
+    private final StringProperty nombre = new SimpleStringProperty();
+    private final StringProperty apellidos = new SimpleStringProperty();
+    private final ObjectProperty<LocalDate> nacimiento = new SimpleObjectProperty<>();
+    private final ObjectProperty<Sexo> sexo = new SimpleObjectProperty<>();
+    private final BooleanProperty repite = new SimpleBooleanProperty();
 
-    private ObjectProperty<Alumno> alumno = new SimpleObjectProperty<>();
+    private final ObjectProperty<Alumno> alumno = new SimpleObjectProperty<>();
 
     // view
 
@@ -57,11 +57,7 @@ public class FriendController implements Initializable {
     @FXML
     private CheckBox repiteCheck;
 
-    public FriendController() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/FriendView.fxml"));
-        loader.setController(this);
-        loader.load();
-    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

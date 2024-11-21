@@ -26,14 +26,13 @@ public class GrupoController implements Initializable {
 
     // model
 
-    private StringProperty denominacion = new SimpleStringProperty();
-    private ObjectProperty<LocalDate> inicioCurso = new SimpleObjectProperty<>();
-    private ObjectProperty<LocalDate> finCurso = new SimpleObjectProperty<>();
-    private DoubleProperty examenes = new SimpleDoubleProperty();
-    private DoubleProperty practicas = new SimpleDoubleProperty();
-    private DoubleProperty actitud = new SimpleDoubleProperty();
-
-    private ObjectProperty<Grupo> grupo = new SimpleObjectProperty<>();
+    private final StringProperty denominacion = new SimpleStringProperty();
+    private final ObjectProperty<LocalDate> inicioCurso = new SimpleObjectProperty<>();
+    private final ObjectProperty<LocalDate> finCurso = new SimpleObjectProperty<>();
+    private final DoubleProperty examenes = new SimpleDoubleProperty();
+    private final DoubleProperty practicas = new SimpleDoubleProperty();
+    private final DoubleProperty actitud = new SimpleDoubleProperty();
+    private final ObjectProperty<Grupo> grupo = new SimpleObjectProperty<>();
 
     // view
 
@@ -67,11 +66,6 @@ public class GrupoController implements Initializable {
     @FXML
     private Label actitudLabel;
 
-    public GrupoController() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/GrupoView.fxml"));
-        loader.setController(this);
-        loader.load();
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

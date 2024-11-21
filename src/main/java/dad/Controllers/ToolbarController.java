@@ -26,12 +26,10 @@ import javafx.scene.control.Button;
 public class ToolbarController implements Initializable {
 
     // model
-
-    private StringProperty nombreFichero = new SimpleStringProperty();
-    private ObjectProperty<Grupo> grupo = new SimpleObjectProperty<>();
+    private final StringProperty nombreFichero = new SimpleStringProperty();
+    private final ObjectProperty<Grupo> grupo = new SimpleObjectProperty<>();
 
     // view
-
     @FXML
     private ToolBar view;
 
@@ -44,11 +42,7 @@ public class ToolbarController implements Initializable {
     @FXML
     private Button guardarButton;
 
-    public ToolbarController() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ToolbarView.fxml"));
-        loader.setController(this);
-        loader.load();
-    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -65,30 +59,15 @@ public class ToolbarController implements Initializable {
         if (ruta != null && !ruta.isEmpty()) {
             try {
                 getGrupo().save(new File(ruta));
-
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.initOwner(GesAulaApp.primaryStage);
-                alert.setTitle("Guardar grupo");
-                alert.setHeaderText("Se ha guardado el grupo correctamente.");
-                alert.setContentText("El grupo " + getGrupo().getDenominacion() + " se ha guardado en el fichero '" + ruta + "'.");
-                alert.showAndWait();
-
+                showAlert(AlertType.INFORMATION, "Guardar grupo", "Se ha guardado el grupo correctamente.",
+                        "El grupo " + getGrupo().getDenominacion() + " se ha guardado en el fichero '" + ruta + "'.");
             } catch (Exception ex) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.initOwner(GesAulaApp.primaryStage);
-                alert.setTitle("Guardar grupo");
-                alert.setHeaderText("Error al guardar el grupo.");
-                alert.setContentText(ex.getMessage());
-                alert.showAndWait();
+                showAlert(AlertType.ERROR, "Guardar grupo", "Error al guardar el grupo.", ex.getMessage());
                 ex.printStackTrace();
             }
         } else {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.initOwner(GesAulaApp.primaryStage);
-            alert.setTitle("Guardar grupo");
-            alert.setHeaderText("Error al guardar el grupo.");
-            alert.setContentText("Debe especificar la ruta del fichero donde se guardará el grupo.");
-            alert.showAndWait();
+            showAlert(AlertType.ERROR, "Guardar grupo", "Error al guardar el grupo.",
+                    "Debe especificar la ruta del fichero donde se guardará el grupo.");
         }
     }
 
@@ -103,6 +82,15 @@ public class ToolbarController implements Initializable {
         if (opcion.isPresent() && opcion.get().equals(ButtonType.OK)) {
             grupo.set(new Grupo());
         }
+    }
+
+    private void showAlert(AlertType type, String title, String header, String content) {
+        Alert alert = new Alert(type);
+        alert.initOwner(GesAulaApp.primaryStage);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public ObjectProperty<Grupo> grupoProperty() {

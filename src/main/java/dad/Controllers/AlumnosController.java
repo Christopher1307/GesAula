@@ -55,15 +55,6 @@ public class AlumnosController {
     @FXML
     private GridPane tablaGridPane;
 
-    public AlumnosController() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AlumnosView.fxml"));
-            loader.setController(this);
-            loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     @FXML
     public void initialize(URL location, ResourceBundle resources) {

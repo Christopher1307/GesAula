@@ -10,7 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.control.SplitPane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -46,19 +46,19 @@ public class RootController implements Initializable {
         try {
             // Load ToolbarView
             FXMLLoader toolbarLoader = new FXMLLoader(getClass().getResource("/fxml/ToolbarView.fxml"));
-            Pane toolbarView = toolbarLoader.load();
+            Parent toolbarView = toolbarLoader.load();
             toolbarController = toolbarLoader.getController();
             root.setTop(toolbarView);
 
             // Load AlumnosView
             FXMLLoader alumnosLoader = new FXMLLoader(getClass().getResource("/fxml/AlumnosView.fxml"));
-            Pane alumnosView = alumnosLoader.load();
+            SplitPane alumnosView = alumnosLoader.load();
             alumnosController = alumnosLoader.getController();
             alumnosTab.setContent(alumnosView);
 
             // Load GrupoView
             FXMLLoader grupoLoader = new FXMLLoader(getClass().getResource("/fxml/GrupoView.fxml"));
-            Pane grupoView = grupoLoader.load();
+            Parent grupoView = grupoLoader.load();
             grupoController = grupoLoader.getController();
             grupoTab.setContent(grupoView);
 
